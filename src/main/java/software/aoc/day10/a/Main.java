@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    static void main() throws IOException {
         FileInstructionReader reader = new FileInstructionReader("src/main/resources/input");
         ListOfMachines allMachines = reader.readAllData();
         Solver solver = new Solver(allMachines);
