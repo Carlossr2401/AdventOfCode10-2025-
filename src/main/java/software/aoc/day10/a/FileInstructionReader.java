@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record FileInstructionReader(String filePath) implements InputReader {
+public record FileInstructionReader(String filePath) {
 
     public ListOfMachines readAllData() throws IOException {
 
