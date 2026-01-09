@@ -1,5 +1,6 @@
 package software.aoc.day10.b;
 
+import software.aoc.day10.InstructionReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,9 +9,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public record FileInstructionReader(String filePath) {
+public record FileInstructionReader(String filePath) implements InstructionReader {
 
-    public ListOfMachines readAllData() throws IOException {
+    @Override
+    public ListOfMachines readAllData() {
         List<Machine> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -19,6 +21,8 @@ public record FileInstructionReader(String filePath) {
                     list.add(createMachine(line));
                 }
             }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read instructions from file: " + filePath, e);
         }
         return new ListOfMachines(list);
     }

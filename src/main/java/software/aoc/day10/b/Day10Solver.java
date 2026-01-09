@@ -1,17 +1,22 @@
 package software.aoc.day10.b;
 
+import software.aoc.day10.InstructionReader;
+import software.aoc.day10.Solver;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Solver {
-    private final ListOfMachines machines;
+public class Day10Solver implements Solver {
+    private final InstructionReader reader;
 
-    public Solver(ListOfMachines machines) {
-        this.machines = machines;
+    public Day10Solver(InstructionReader reader) {
+        this.reader = reader;
     }
 
-    public long solveProblem() {
+    @Override
+    public Object solve() {
+        ListOfMachines machines = reader.readAllData();
         long totalPresses = 0;
         int i = 0;
         for (Machine machine : machines) {
