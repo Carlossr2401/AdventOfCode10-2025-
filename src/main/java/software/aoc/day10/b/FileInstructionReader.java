@@ -1,5 +1,6 @@
 package software.aoc.day10.b;
 
+import software.aoc.day10.Button;
 import software.aoc.day10.InstructionReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,10 +10,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public record FileInstructionReader(String filePath) implements InstructionReader {
+public record FileInstructionReader(String filePath) implements InstructionReader<MachinesB> {
 
     @Override
-    public ListOfMachines readAllData() {
+    public MachinesB readAllData() {
         List<Machine> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -24,7 +25,7 @@ public record FileInstructionReader(String filePath) implements InstructionReade
         } catch (IOException e) {
             throw new RuntimeException("Failed to read instructions from file: " + filePath, e);
         }
-        return new ListOfMachines(list);
+        return new MachinesB(list);
     }
 
     private Machine createMachine(String line) {

@@ -1,10 +1,10 @@
-package software.aoc.day10.b;
+package software.aoc.day10.a;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 
-public record ListOfMachines(List<Machine> list) implements Iterable<Machine> {
+public record MachinesA(List<Machine> list) implements Iterable<Machine> {
 
     @Override
     public Iterator<Machine> iterator() {

@@ -1,4 +1,4 @@
-package software.aoc.day10.b;
+package software.aoc.day10;
 
 import java.util.List;
 

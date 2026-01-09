@@ -1,16 +1,20 @@
 package software.aoc.day10.a;
 
+import software.aoc.day10.Button;
+import software.aoc.day10.InstructionReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record FileInstructionReader(String filePath) {
+public record FileInstructionReader(String filePath) implements InstructionReader<MachinesA> {
 
-    public ListOfMachines readAllData() throws IOException {
+    @Override
+    public MachinesA readAllData() {
 
         List<Machine> list = new ArrayList<>();
+
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -18,9 +22,11 @@ public record FileInstructionReader(String filePath) {
             while ((line = reader.readLine()) != null) {
                 list.add(createMachine(line));
             }
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file", e);
         }
 
-        return new ListOfMachines(list);
+        return new MachinesA(list);
     }
 
     private Machine createMachine(String line) {

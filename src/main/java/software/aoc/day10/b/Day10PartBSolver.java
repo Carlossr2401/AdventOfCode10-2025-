@@ -2,21 +2,22 @@ package software.aoc.day10.b;
 
 import software.aoc.day10.InstructionReader;
 import software.aoc.day10.Solver;
+import software.aoc.day10.Button;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Day10Solver implements Solver {
-    private final InstructionReader reader;
+public class Day10PartBSolver implements Solver {
+    private final InstructionReader<MachinesB> reader;
 
-    public Day10Solver(InstructionReader reader) {
+    public Day10PartBSolver(InstructionReader<MachinesB> reader) {
         this.reader = reader;
     }
 
     @Override
     public Object solve() {
-        ListOfMachines machines = reader.readAllData();
+        MachinesB machines = reader.readAllData();
         long totalPresses = 0;
         int i = 0;
         for (Machine machine : machines) {
