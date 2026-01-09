@@ -139,3 +139,18 @@ Los `Solver` no instancian sus lectores de datos. Reciben una instancia de `Inst
 ### 4. Interface Segregation (ISP) y Generics
 
 Se ha utilizado una interfaz `InstructionReader<T>` genérica para permitir que cada parte del problema devuelva sus propias estructuras de datos (`MachinesA` o `MachinesB`) manteniendo un contrato común.
+
+### 5. Iterator Pattern (Iterable)
+
+Las clases contenedoras `MachinesA` y `MachinesB` implementan la interfaz estándar `Iterable<Machine>`. Esto permite encapsular la colección interna (una `List<Machine>`) y exponer solo la capacidad de iterar sobre sus elementos, sin revelar la estructura de datos subyacente.
+
+**Beneficio:**
+Permite utilizar el bucle `for-each` de Java directamente sobre el objeto contenedor en la lógica del Solver, resultando en un código más limpio y legible ("Clean Code").
+
+```java
+// Gracias a Iterable, el Solver iterar así directamente:
+for (Machine machine : allMachines) {
+    int result = solveMachine(machine);
+    // ...
+}
+```

@@ -20,7 +20,7 @@ public class Day10PartASolver implements Solver {
 
     public int solveProblem() {
         int totalPresses = 0;
-        for (Machine machine : allMachines.list()) {
+        for (Machine machine : allMachines) {
             int minPresses = solveMachine(machine);
             totalPresses += minPresses;
         }
