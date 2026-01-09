@@ -1,13 +1,14 @@
 package software.aoc.day10.a;
 
+import software.aoc.day10.Solver;
+import software.aoc.day10.SolverFactory;
 import java.io.IOException;
 
 public class Main {
 
     static void main() throws IOException {
-        FileInstructionReader reader = new FileInstructionReader("src/main/resources/input");
-        ListOfMachines allMachines = reader.readAllData();
-        Solver solver = new Solver(allMachines);
-        System.out.println("Answer: " + solver.solveProblem());
+        SolverFactory factory = new SolverFactory();
+        Solver solver = factory.createSolver("src/main/resources/input");
+        System.out.println("Answer: " + solver.solve());
     }
 }
